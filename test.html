@@ -1,0 +1,64 @@
+<div id="frame">
+  <div id="head">
+  </div>
+  <div id="blinker"></div>
+</div>
+<style type="text/css">
+
+  @-webkit-keyframes shakehead {
+  	0%   { -webkit-transform: rotate(10deg); }
+  	100% { -webkit-transform: rotate(-5deg); }
+  }
+  #head {
+    -webkit-animation: shakehead 2s alternate infinite;
+    background:url(face1.png);
+    position:absolute;
+    width:190px;
+    height:218px;
+    right:80px;
+  }
+  #head.yawn {
+    background:url(face2.png);
+  }
+  
+  #blinker {
+    width:12px;
+    height:30px;
+    background:url(blinker.png);
+    position:absolute;
+    top:104px;
+    left:102px;
+  }
+  
+  #frame {
+    width:600px;
+    height:306px;
+    background:url(radiobed.png) no-repeat;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-203px;
+    margin-left:-300px
+  }
+</style>
+<script type="text/javascript">
+var blinkerHidden = false;
+
+var t = setInterval(function() {
+  if (blinkerHidden) {
+    document.getElementById('blinker').style.display = "block";
+  } else {
+    document.getElementById('blinker').style.display = "none";
+  }
+  blinkerHidden = !blinkerHidden; 
+},500);
+
+var t2 = setInterval(function() {
+  document.getElementById('head').setAttribute('class','yawn');
+  
+  var t3 = setTimeout(function() {
+    document.getElementById('head').setAttribute('class',''); 
+  },2000)
+   
+},6000);
+</script>
